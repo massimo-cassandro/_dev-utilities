@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^apple-touch-icon.png /icon.png
+RewriteRule ^favicon.png /icon.png
+RewriteRule ^favicon.ico /icon.png

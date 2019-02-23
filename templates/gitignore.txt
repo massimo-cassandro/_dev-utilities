@@ -1,0 +1,17 @@
+*~
+.DS_Store
+*.mwb.bak
+*.sass-cache
+.dropbox
+.npm
+node_modules/
+bower_components/
+.codekit-cache/
+
+# ambienti sviluppo
+/twig
+/_dev
+/-doc
+/-public
+/-views
+/node_modules

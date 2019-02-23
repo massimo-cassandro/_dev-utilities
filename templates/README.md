@@ -1,0 +1,1 @@
+file da copiare nella dir di progetto e personalizzare
