@@ -8,11 +8,15 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.0",
+    "@fancyapps/fancybox": "^3.5.6",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "moment": "^2.24.0",
+    "mustache": "^3.0.1",
+    "popper.js": "^1.14.7",
     "lazysizes": "^4.1.4",
     "object-fit-images": "^3.2.4",
     "picturefill": "^3.0.2",
-    "popper.js": "^1.14.7",
 
     "js-utilities": "git+https://github.com/massimo-cassandro/JS-utilities.git#master",
     "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master"

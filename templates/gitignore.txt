@@ -10,7 +10,7 @@ bower_components/
 
 # ambienti sviluppo
 /twig
-/_dev
+/_dev-utilities
 /-doc
 /-public
 /-views
