@@ -29,6 +29,7 @@
     "datatables.net-rowreorder-bs4": "^1.2.5",
 
     "js-utilities": "git+https://github.com/massimo-cassandro/JS-utilities.git#master",
-    "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master"
+    "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master",
+    "front-end-utilities": "git+https://github.com/massimo-cassandro/front-end-utilities.git"
   }
 }
