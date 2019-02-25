@@ -10,7 +10,7 @@ setlocale(LC_ALL, 'it_IT', 'it', 'IT');
 
 if ( empty($_GET['twig']) ) die( 'Twig non indicato' );
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/twig/vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
 // ** FILE DI CONFIGURAZIONE LOCALE **
 /*
