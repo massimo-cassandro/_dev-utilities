@@ -31,6 +31,7 @@
 
     "js-utilities": "git+https://github.com/massimo-cassandro/JS-utilities.git#master",
     "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master",
-    "front-end-utilities": "git+https://github.com/massimo-cassandro/front-end-utilities.git#master"
+    "front-end-utilities": "git+https://github.com/massimo-cassandro/front-end-utilities.git#master",
+    "auto-datatables": "git+https://github.com/massimo-cassandro/auto-datatables.git#master"
   }
 }
