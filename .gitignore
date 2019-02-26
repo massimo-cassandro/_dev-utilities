@@ -3,12 +3,5 @@
 *.mwb.bak
 *.sass-cache
 .dropbox
-/twig
-/_dev
-/-doc
-/-public
-/-views
-/--bookmarks/*
-!/--bookmarks/.gitkeep
-node_modules/
+node_modules
 bower_components/

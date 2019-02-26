@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/joshtronic/php-loremipsum.git",
-                "reference": "24b768a63091400200bf70d9f278d0569ae78a5c"
+                "reference": "e41f4f76303b09b66448100d45a1bfdf695192bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joshtronic/php-loremipsum/zipball/24b768a63091400200bf70d9f278d0569ae78a5c",
-                "reference": "24b768a63091400200bf70d9f278d0569ae78a5c",
+                "url": "https://api.github.com/repos/joshtronic/php-loremipsum/zipball/e41f4f76303b09b66448100d45a1bfdf695192bd",
+                "reference": "e41f4f76303b09b66448100d45a1bfdf695192bd",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "ipsum",
                 "lorem"
             ],
-            "time": "2018-01-09 05:57:45"
+            "time": "2019-01-03 06:21:50"
         }
     ],
     "packages-dev": [],
