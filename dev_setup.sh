@@ -36,9 +36,9 @@ ln -s "$dev_utilities_folder" "$DEST_DIR"
 if [ ! -f "$DEST_DIR"/.htaccess ]; then
   cp "$templates_dir"/htaccess.txt "$DEST_DIR"/.htaccess
 fi
-if [ ! -f "$DEST_DIR"/.gitignore ]; then
-  cp "$templates_dir"/gitignore_dev.txt "$DEST_DIR"/.gitignore
-fi
+# if [ ! -f "$DEST_DIR"/.gitignore ]; then
+#   cp "$templates_dir"/gitignore_dev.txt "$DEST_DIR"/.gitignore
+# fi
 if [ ! -f "$DEST_DIR"/index.html ]; then
   cp "$templates_dir"/index.html "$DEST_DIR"
 fi
