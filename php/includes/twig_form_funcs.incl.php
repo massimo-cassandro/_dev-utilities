@@ -26,6 +26,7 @@
   - value     : imposta il value dell'elemento (o l'option selected in caso di select)
   - options   : elenco di options. È un array di array in cui il primo valore di ogni coppia corrisponde al value
                 e il secondo al testo. Inserire un array vuoto per avere un option vuoto (es: [[], [1, 'xxx'], [2, 'yyy']])
+                In alternativa: stringa '<option value=""></option> ...'
   - label     : label dell'elemento. È utilizzato solo se non è definito nel widget
 
   - attr, label_attr : aggiunge parametri `attr` e `label_attr` a fini di test
@@ -333,13 +334,16 @@ function form_widget($form_array = array(), $widget_vars = array()) {
     echo "<select {$params['attr_string']}>\n" ;
 
     if(!empty( $params['dev']['options'] )) {
-
-      foreach( $params['dev']['options'] as $v) {
-        if( count($v) ) {
-          echo "<option value=\"{$v[0]}\"" . ($params['value'] == $v[0]? ' selected' : '' ) . ">{$v[1]}</option>\n";
-        } else {
-          echo '<option value=""></option>';
+      if(is_array($params['dev']['options'])) {
+        foreach( $params['dev']['options'] as $v) {
+          if( count($v) ) {
+            echo "<option value=\"{$v[0]}\"" . ($params['value'] == $v[0]? ' selected' : '' ) . ">{$v[1]}</option>\n";
+          } else {
+            echo '<option value=""></option>';
+          }
         }
+      } else {
+        echo $params['dev']['options'];
       }
     }
 
