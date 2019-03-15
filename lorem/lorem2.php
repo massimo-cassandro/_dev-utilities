@@ -6,7 +6,7 @@ require  'vendor/joshtronic/php-loremipsum/src/LoremIpsum.php';
 
   USO:
   -------------
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/_dev/lorem/lorem2.php';
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/_dev-utilities/lorem/lorem2.php';
   $lorem = new lorem2();
 
 
@@ -96,10 +96,10 @@ class lorem2 extends joshtronic\LoremIpsum
 
     $width = $maxWidth? mt_rand($minWidth, $maxWidth) : $minWidth;
     $height = $maxHeight? mt_rand($minHeight, $maxHeight) : $minHeight;
-
+    $src = strtolower($src);
 
     $imgId = array(
-      'src|' . strtolower($src),
+      'src|' . $src,
       'w|'   . $width,
       'h|'   . $height
     );
@@ -111,7 +111,8 @@ class lorem2 extends joshtronic\LoremIpsum
     return array(
       'id' => 'v:' . implode(',', $imgId), // questa forma non richiede urlencoding ed è leggibile
       'width' => $width,
-      'height' => $height
+      'height' => $height,
+      'mime' => $src == 'gd'? 'image/png' : 'image/jpeg'
     );
   }
 }
