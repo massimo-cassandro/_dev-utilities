@@ -10,7 +10,28 @@
   con $lorem
   $lorem->img_array(800, 1200, 600, 1000, false, '', 'picsum')
   $lorem->img_array(800, 1200, 600, 1000, false, '', 'placeholder') // placeholder
-  $lorem->img_array(800, 1200, 600, 1000); // local GD, canBeNull == false
+  $lorem->img_array(800, 1200, 600, 1000); // GD, canBeNull == false
+
+
+  USO con immagine locale indicata direttamente
+  ==================================================
+    /_dev-utilities/php/local_viewer.php?img_id=__url_encoded_path__&bb=800x&nobb
+
+    NB: il path deve essere all'interno della DOCUMENT ROOT del sito e deve
+    iniziare con lo slash
+
+  esempio:
+
+    /_dev-utilities/php/local_viewer.php?img_id=%2F_TEST%2F_test%2FDefault%2Fimg_testata%2Fjcob-nasyr-1269913-unsplash.jpg&bb=800x&nobb
+
+
+  con rewrite di questo file su /viewer/:
+  ---------------------------------------
+  se il path dell'immagine è inserito direttamente nel path del viewer è necessario eseguire
+  un doppio urlencoding del path del file:
+
+    /viewer/%252f_TEST%252f_test%252fDefault%252fimg_testata%252fjcob-nasyr-1269913-unsplash.jpg?bb=800x
+
 
 */
 
@@ -20,6 +41,11 @@ $font = $_SERVER['DOCUMENT_ROOT'] . '/_dev-utilities/php/CANDARAB.TTF';
 
 
 if(!empty($_GET['img_id'])) $img_file = $_GET['img_id'];
+
+// default
+$img_params = array(
+  'src' => null
+);
 
 if( substr($img_file, 0, 2) == 'v:') {
   list($temp, $img_file) = explode(':', $img_file );
@@ -42,8 +68,9 @@ if($img_params['src'] == 'picsum')  { // picsum|width/height (picsum|400/500)
 } else if($img_params['src'] ==  'placeholder') { // placeholder|350x150 | placeholder|__params__
 
   $img_file =  'https://via.placeholder.com/' . $img_params['w'] . 'x' . $img_params['h'] .'.jpeg';
-
 }
+
+
 
 function calculate_text_sizes($string, $img_width, $img_height) {
   global $font;
@@ -119,6 +146,8 @@ if( $img_file ) {
 
   } else {
     $isGD = false;
+    $img_file = $_SERVER['DOCUMENT_ROOT'] . urldecode($img_file);
+
     $imm_info=getimagesize($img_file);
     /*
     $imm_info:
@@ -230,7 +259,7 @@ if( $img_file ) {
 
   	// ****************
   	// !stampa bb
-    if(!isset($img_params['nobb'])) {
+    if(!isset($img_params['nobb']) and !isset($_GET['nobb'])) {
       $resized_width  = imagesx($resized);
       $resized_height = imagesy($resized);
 
