@@ -32,7 +32,9 @@
 
     /viewer/%252f_TEST%252f_test%252fDefault%252fimg_testata%252fjcob-nasyr-1269913-unsplash.jpg?bb=800x
 
+    con aggiunta del parametro `nobb` direttamente nel nome dell'immagine (php)
 
+    '/viewer/' . urlencode(urlencode('/root/path/to/img/file' . '|nobb'))
 */
 
 //*******
@@ -147,6 +149,17 @@ if( $img_file ) {
   } else {
     $isGD = false;
     $img_file = $_SERVER['DOCUMENT_ROOT'] . urldecode($img_file);
+
+
+    if(strpos($img_file, '|') !== false ) {
+      $temp = explode('|', $img_file);
+      $img_file = array_shift ($temp);
+      foreach($temp as $v) {
+        $img_params[$v] = 1;
+      }
+    }
+
+
 
     $imm_info=getimagesize($img_file);
     /*
