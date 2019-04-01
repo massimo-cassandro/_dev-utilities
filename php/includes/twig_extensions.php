@@ -12,6 +12,7 @@ $twig->addExtension(new Twig_Extensions_Extension_Intl());
 $twig->addExtension(new Twig_Extensions_Extension_Array());
 $twig->addExtension(new Twig_Extensions_Extension_Text());
 
+/*
 // richiede
 // composer require erusev/parsedown
 $filter = new Twig_SimpleFilter('md2html', function ($string) {
@@ -19,6 +20,11 @@ $filter = new Twig_SimpleFilter('md2html', function ($string) {
 	echo $Parsedown->text($string);
 });
 $twig->addFilter($filter);
+*/
+
+// cssinliner
+use Twig\CssInliner\CssInlinerExtension;
+$twig->addExtension(new CssInlinerExtension());
 
 $filter = new Twig_SimpleFilter('localizednumber', function ($number) {
     return number_format($number, 2, ',', '.');
