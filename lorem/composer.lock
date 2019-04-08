@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "046037abba6d005dc0737440c154b3a2",
     "content-hash": "c5083cd10a32e8b0bc51df7513ddf94c",
     "packages": [
         {
@@ -51,7 +50,7 @@
                 "ipsum",
                 "lorem"
             ],
-            "time": "2019-01-03 06:21:50"
+            "time": "2019-01-03T06:21:50+00:00"
         }
     ],
     "packages-dev": [],

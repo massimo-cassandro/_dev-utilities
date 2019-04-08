@@ -20,9 +20,9 @@
         "require-dev": {
             "satooshi/php-coveralls": "~1.0"
         },
-        "time": "2019-01-03 06:21:50",
+        "time": "2019-01-03T06:21:50+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "joshtronic\\": "src/"
