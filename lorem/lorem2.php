@@ -115,4 +115,17 @@ class lorem2 extends joshtronic\LoremIpsum
       'mime' => $src == 'gd'? 'image/png' : 'image/jpeg'
     );
   }
+
+  public function local_img_array($img_local_path, $nobb = true) {
+
+    $img_info = getimagesize($_SERVER['DOCUMENT_ROOT'] . $img_local_path, $nobb);
+
+    return array (
+      'id' => urlencode(urlencode($img_local_path . ($nobb  ? '|nobb' : ''))),
+      'width' => $img_info[0],
+      'height' => $img_info[1],
+      'mime' => $img_info['mime']
+    );
+
+  }
 }
