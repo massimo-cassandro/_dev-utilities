@@ -116,16 +116,22 @@ class lorem2 extends joshtronic\LoremIpsum
     );
   }
 
-  public function local_img_array($img_local_path, $nobb = true) {
+  public function local_img_array($img_local_path, $nobb = true, $concat_array=null) {
 
     $img_info = getimagesize($_SERVER['DOCUMENT_ROOT'] . $img_local_path, $nobb);
 
-    return array (
+    $img_array= array (
       'id' => urlencode(urlencode($img_local_path . ($nobb  ? '|nobb' : ''))),
       'width' => $img_info[0],
       'height' => $img_info[1],
       'mime' => $img_info['mime']
     );
+
+    if($concat_array) {
+      $img_array = array_merge($img_array, $concat_array);
+    }
+
+    return $img_array;
 
   }
 }
