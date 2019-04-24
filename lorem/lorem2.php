@@ -118,6 +118,8 @@ class lorem2 extends joshtronic\LoremIpsum
 
   public function local_img_array($img_local_path, $nobb = true, $concat_array=null) {
 
+    // $concat_array -> eventuale array da concatenare a quello generato
+
     $img_info = getimagesize($_SERVER['DOCUMENT_ROOT'] . $img_local_path, $nobb);
 
     $img_array= array (
