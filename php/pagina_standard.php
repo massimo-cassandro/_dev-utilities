@@ -31,8 +31,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
   $test_variables      → eventuale set di variabili da passare ogni volta al twig
                          (default: set di variabili definiti di seguito)
 
-  $test_vars_dir       → percorso della dir contenente i file con le varibili di test
-                         (default `/_TEST/`)
+  $global_test_dir → percorso della dir contenente i file con le variabili di test globali
+                         (default `/_TEST`)
+
+  $pages_test_dir → percorso della dir contenente i file con le variabili di test delle singole pagine
+                         (default `/{$global_test_dir}/_pagine/`) NB con slash finale
 */
 if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/_TEST/_local_config.incl.php') ) {
   require $_SERVER['DOCUMENT_ROOT'] . '/_TEST/_local_config.incl.php';
@@ -161,23 +164,24 @@ if(!empty($_GET['dev'])) {
 
 /*
   inclusione dati da un file che abbia lo stesso nome e lo stesso path
-  (in {$test_vars_dir} anziché in views) del twig
+  (in {$pages_test_dir} anziché in views) del twig
 
-  $test_vars_dir va definito, se necessario in _local_config.incl.php
-  $test_vars_dir è il percorso dalla root del sito (con slash finale)
+  $pages_test_dir va definito, se necessario in _local_config.incl.php
+  $pages_test_dir è il percorso dalla root del sito (con slash finale)
 
   come nel caso precedente, tutte le variabili vanno inserite in un file php
   che abbia lo stesso nome del file twig (estensioni escluse) all'interno di
   un array $dev
   tutte le chiavi dell'array verranno aggiunte a $test_variables
 */
-if(empty($test_vars_dir )) $test_vars_dir = "/_TEST/";
+if(empty($global_test_dir )) $global_test_dir = "/_TEST";
+if(empty($pages_test_dir )) $pages_test_dir = "{$global_test_dir}/_pagine/"; // con slash finale
 $test_file = false;
-if(file_exists($_SERVER['DOCUMENT_ROOT']. $test_vars_dir . $twig_file . '.incl.php')) {
-  $test_file = $_SERVER['DOCUMENT_ROOT']. $test_vars_dir . $twig_file . '.incl.php';
+if(file_exists($_SERVER['DOCUMENT_ROOT']. $pages_test_dir . $twig_file . '.incl.php')) {
+  $test_file = $_SERVER['DOCUMENT_ROOT']. $pages_test_dir . $twig_file . '.incl.php';
 
-} else if( file_exists($_SERVER['DOCUMENT_ROOT']. $test_vars_dir . $twig_file . '.php') ) {
-  $test_file = $_SERVER['DOCUMENT_ROOT']. $test_vars_dir . $twig_file . '.php';
+} else if( file_exists($_SERVER['DOCUMENT_ROOT']. $pages_test_dir . $twig_file . '.php') ) {
+  $test_file = $_SERVER['DOCUMENT_ROOT']. $pages_test_dir . $twig_file . '.php';
 }
 
 
@@ -201,8 +205,15 @@ echo '<pre>'; print_r($test_variables); echo '</pre><hr>';exit();
 
 $template_code = $twig->render("{$twig_file}.html.twig", $test_variables);
 
-// aggiounta eventuale file js per l'ambiente di sviluppo
-$dev_js_file = $test_vars_dir . $twig_file . '.dev.js';
+// aggiunta eventuale file js per l'ambiente di sviluppo globale
+$global_dev_js_file = $global_test_dir . '/global.dev.js';
+if(file_exists($_SERVER['DOCUMENT_ROOT']. $global_dev_js_file )) {
+  $global_dev_js_file = '<script src="' . $global_dev_js_file . '"></script>';
+  $template_code = str_replace('</body>', "\n${global_dev_js_file}\n</body>" ,$template_code );
+}
+
+// aggiunta eventuale file js per l'ambiente di sviluppo legato ad una pagina specifica
+$dev_js_file = $pages_test_dir . $twig_file . '.dev.js';
 if(file_exists($_SERVER['DOCUMENT_ROOT']. $dev_js_file )) {
   $dev_js_file = '<script src="' . $dev_js_file . '"></script>';
   $template_code = str_replace('</body>', "\n${dev_js_file}\n</body>" ,$template_code );
