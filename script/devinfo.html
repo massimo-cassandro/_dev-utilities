@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Device info</title>
+  </head>
+  <body>
+    <h1>Device info</h1>
+    <pre id="info"></pre>
+    <script>
+      let screen_info = {
+        userAgent: window.navigator.userAgent,
+        devicePixelRatio: window.devicePixelRatio,
+        screen_width: window.screen.width,
+        screen_height: window.screen.height
+      };
+      document.getElementById('info').innerHTML = JSON.stringify(screen_info, null, 5);
+    </script>
+  </body>
+</html>

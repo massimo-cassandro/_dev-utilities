@@ -17,12 +17,13 @@
     "moment": "^2.24.0",
     "mustache": "^3.0.1",
 
-    "lazysizes": "^4.1.4",
+    "lazysizes": "^5.1.0",
     "object-fit-images": "^3.2.4",
     "picturefill": "^3.0.2",
     "js-cookie": "^2.2.0",
     "textarea-autosize": "^0.4.2",
     "fontfaceobserver": "^2.1.0",
+    "svg4everybody": "^2.1.9",
 
     "datatables.net-bs4": "^1.10.19",
     "datatables.net-fixedheader-bs4": "^3.1.5",
