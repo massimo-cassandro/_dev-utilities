@@ -36,7 +36,7 @@ ecc.
 
   		{% for densita in 1..3 if not (breakpoint in ['xl','lg'] and densita == 3 ) %}
   		  {% set srcset = srcset|merge([
-    		  base_url ~ basename ~ '-' ~ breakpoint ~ '@' ~ densita ~ 'x.' ~ formato ~
+    		  base_url ~ basename ~ '-' ~ breakpoint ~ '@' ~ densita ~ 'x ' ~ formato ~
     		  '?v=' ~ glob_vars.v ~ (densita > 1? ' ' ~ densita ~ 'x' : '')
     		]) %}
   		{%- endfor -%}
