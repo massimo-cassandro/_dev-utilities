@@ -23,13 +23,13 @@ dev_utilities_folder=~/Sites/_dev-utilities
 templates_dir="$dev_utilities_folder"/templates
 
 rm -rf "$DEST_DIR"/vendor
-rm -rf "$DEST_DIR"/_dev
+#rm -rf "$DEST_DIR"/_dev
 rm -rf "$DEST_DIR"/_dev-utilities
-rm -rf "$DEST_DIR"/node_modules
+#rm -rf "$DEST_DIR"/node_modules
 
 # creazione symlinks
 ln -s "$vendor_folder" "$DEST_DIR"
-ln -s "$node_modules_folder" "$DEST_DIR"
+#ln -s "$node_modules_folder" "$DEST_DIR"
 ln -s "$dev_utilities_folder" "$DEST_DIR"
 
 # copia file di default
@@ -77,8 +77,8 @@ if [ "$BUNDLE_DIR" != "" ]; then
   rm -rf "$DEST_DIR"/-public
   rm -rf "$DEST_DIR"/-views
 
-  ln -s "$BUNDLE_DIR"/Resources/views "$DEST_DIR"/-views
-  ln -s "$BUNDLE_DIR"/Resources/public "$DEST_DIR"/-public
+  #ln -s "$BUNDLE_DIR"/Resources/views "$DEST_DIR"/-views
+  #ln -s "$BUNDLE_DIR"/Resources/public "$DEST_DIR"/-public
 
   if [ ! -f "$BUNDLE_DIR"/.gitignore ]; then
     cp "$templates_dir"/gitignore.txt "$BUNDLE_DIR"/.gitignore
