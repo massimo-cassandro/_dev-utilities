@@ -35,7 +35,7 @@
     "front-end-utilities": "git+https://github.com/massimo-cassandro/front-end-utilities.git#master",
     "auto-datatables": "git+https://github.com/massimo-cassandro/auto-datatables.git#master",
     "grabbable2": "git+https://github.com/massimo-cassandro/grabbable2.git#master",
-    "file-uploader": "git+https://github.com/massimo-cassandro/file-uploader2.git#master"
+    "js-file-uploader": "^2.2.1"
 
   }
 }
