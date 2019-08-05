@@ -30,9 +30,8 @@
     "datatables.net-responsive-bs4": "^2.2.3",
     "datatables.net-rowreorder-bs4": "^1.2.5",
 
-    "js-utilities": "git+https://github.com/massimo-cassandro/JS-utilities.git#master",
-    "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master",
-    "front-end-utilities": "git+https://github.com/massimo-cassandro/front-end-utilities.git#master",
+    "m-layout-tools": "^2.0.1",
+    "m-utilities": "^1.1.1",
     "auto-datatables": "git+https://github.com/massimo-cassandro/auto-datatables.git#master",
     "grabbable2": "git+https://github.com/massimo-cassandro/grabbable2.git#master",
     "js-file-uploader": "^2.2.1"
