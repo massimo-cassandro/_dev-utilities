@@ -87,7 +87,10 @@ function twig_include_raw(Twig_Environment $env, $template) {
 $twig->addFunction('include_raw', new Twig_SimpleFunction('twig_include_raw', array('needs_environment' => true, 'is_safe'=> array('all'))));
 */
 
-
+$filter = new Twig_SimpleFilter('humanize', function ($string) {
+  return $string;
+});
+$twig->addFilter($filter);
 
 $filter = new Twig_SimpleFilter('trans', function ($string) {
     return $string;
