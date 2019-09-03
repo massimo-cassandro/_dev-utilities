@@ -29,17 +29,17 @@
     // end default
 
       uploader_legend: true,
-      uploader_legend_text: null,
+      uploader_legend_text: '__legend__',
 
 
       filetype: 'auto|pdf|img',
 
-      img_min_w   : null,
-      img_max_w   : null,
-      img_w       : null,
-      img_min_h   : null,
-      img_max_h   : null,
-      img_h       : null
+      img_min_w: null,
+      img_max_w: null,
+      img_w: null,
+      img_min_h: null,
+      img_max_h: null,
+      img_h: null
 
     },
 
@@ -52,9 +52,10 @@
     extra_fields: [
       {
         value_key : 'field_key',      <== viene aggiunto anche a values
+        use_rel_id: true,             <== per far usare ai campi exyra il rel_id
         markup    : 'html_string'
         std_markup: {     <== alternativa a markup, campi predefiniti
-          label: 'label'
+          label: 'label',
           type : 'text|email|url|number...'
 
           //TODO aggiungere attributi extra facoltativi
@@ -77,6 +78,7 @@
 {% set minia_bb = (data.multiple is not defined or data.multiple == false)? '400x400' : '200x200' %}
 {% set viewer = viewer is defined ? viewer : url_esterni.shared_apps ~ '/viewer' %}
 {% set extra_fields = (extra_fields is defined and extra_fields is iterable and extra_fields|length)? extra_fields : null %}
+{% set  values = (values is defined and values is iterable and values|length)? values : null %}
 
 {% set parsed_values = null %}
 {% if values|default() is not null and values|length %}
@@ -125,8 +127,12 @@
   {% for row in extra_fields %}
     {% set this_extra_field = { value_key: row.value_key } %}
 
+    if(row.use_rel_id is defined and row.use_rel_id == true) {
+      {% set this_extra_field = this_extra_field|merge({use_rel_id: true}) %}
+    }
+
     {% set this_markup = '' %}
-    {% if row.markup %}
+    {% if row.markup is defined %}
       {% set this_markup = row.markup %}
 
     {% else %} {# markup predefiniti #}
