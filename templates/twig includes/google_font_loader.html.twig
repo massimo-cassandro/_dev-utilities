@@ -2,12 +2,12 @@
 tag preload e caricamento google font
 da: https://googlefonts.3perf.com/
 
-la variabile fontsnt è un array che genera un tag link per ogni elemento
+la variabile fonts è un array che genera un tag link per ogni elemento
 usare solo se necessario differenziare i subset di due dont
 
 Gli elementi fonts devono essere già urlencoded
 
-{%- include '@includes/google_font_load.html.twig' with {
+{%- include '@includes/google_font_loader.html.twig' with {
   fonts: ['Raleway:400,400i,700,700i']
 } -%}
 
@@ -26,7 +26,7 @@ esempio con subset
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 {% for fnt in fonts %}
-	{% set font_url = 'https://fonts.googleapis.com/css?family=' ~ fnt %}
+	{% set font_url = 'https://fonts.googleapis.com/css?family=' ~ fnt ~ '&amp;display=swap' %}
 	<link rel="preload" href="{{ font_url|raw }}" as="fetch" crossorigin="anonymous">
   <link href="{{ font_url|raw }}" rel="stylesheet">
 {% endfor %}
