@@ -23,7 +23,9 @@ $twig->addFilter($filter);
 */
 
 // cssinliner
-use Twig\Extra\CssInliner\CssInlinerExtension;
+
+use Twig\CssInliner\CssInlinerExtension;
+// use Twig\Extra\CssInliner\CssInlinerExtension;
 $twig->addExtension(new CssInlinerExtension());
 
 $filter = new Twig_SimpleFilter('localizednumber', function ($number) {
